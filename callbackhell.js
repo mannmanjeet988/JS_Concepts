@@ -1,4 +1,37 @@
-// callback hell
+//Js is  synchronous and  single threaded language that means it can do only one thing at a time in a specific order
+// with Web API(setTimeout) and using Callbacks functions enable us to do asynchronous operations.
+// setTimeout(function(){
+//     console.log("timer")
+// },5000)
+
+
+function x(y){
+    console.log("x called")
+    y()
+}
+
+function y(){
+    console.log("y called")
+}
+//x(y)
+
+function attachEventlisteners(){
+ let count =0;
+ document.getElementById("click-me-btn").addEventListener("click",()=>{
+    console.log("Button Clicked", ++count)
+ })
+}
+//attachEventlisteners()
+// garbage collection and remove event listeners
+// the callbacks which are not in use needs to be removed, bcz they are heavy i.e. the callback function of event listener 
+// make closure with the lexical scope and it occupies extra memory, so good practice to remove event listeners if not in use
+// so as to free this occupied memory
+
+
+
+
+
+//<---------- callback hell-------------->
 
 // greet -> take order -> give food->  take payment -> thankyou
 
@@ -40,7 +73,7 @@
 // }
 
 
-// Promise Chaining
+// <-----------Promise Chaining------------->
 function addition(n1,n2){
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
