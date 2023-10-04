@@ -1,8 +1,12 @@
 //Js is  synchronous and  single threaded language that means it can do only one thing at a time in a specific order
-// with Web API(setTimeout) and using Callbacks functions enable us to do asynchronous operations.
+// Importance of callback:with Web API(setTimeout) and using Callbacks functions enable us to do asynchronous operations.
 // setTimeout(function(){
 //     console.log("timer")
 // },5000)
+
+// problem associated with callback
+//1. Multiple nested callbacks(pyramid of doom) makes code difficult to maintain
+// 2. Inversion of control
 
 
 function x(y){
@@ -72,6 +76,33 @@ function attachEventlisteners(){
 //     greet(takeorder);
 // }
 
+const cart=["laptop", "smart watch","mobile phone"]
+
+function createOrder(cart, proceedToPayment )
+{
+        proceedToPayment(showOrderSummary)
+        {
+            showOrderSummary(updateWallet)
+            {
+                updateWallet()
+            }
+        }
+}
+
+createOrder(cart,proceedToPayment)
+
+function proceedToPayment(){
+    console.log("proceed for payment")
+}
+
+function showOrderSummary(){
+    console.log("Here is the updated order summary!", cart)
+}
+
+function updateWallet(){
+    console.log("Updated wallet")
+}
+
 
 // <-----------Promise Chaining------------->
 function addition(n1,n2){
@@ -134,3 +165,5 @@ async function handlePromisesUsingAsyncAwait(){
 }
 
 handlePromisesUsingAsyncAwait()
+
+

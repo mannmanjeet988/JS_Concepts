@@ -1,5 +1,3 @@
-console.log("hi")
-
 
 
 document.getElementById("add-btn").addEventListener("click",()=>{
@@ -11,7 +9,7 @@ document.getElementById("add-btn").addEventListener("click",()=>{
     let n2 = parseFloat(num2)
     
     if (!isNaN(n1) && !isNaN(n2) ){
-        console.log(typeof n1, n1)
+        console.log(typeof n1, n2)
         let res= n1 + n2;
         console.log(res)
         document.getElementById("result").textContent= res;
@@ -67,5 +65,35 @@ document.getElementById("add-btn").addEventListener("click",()=>{
 // // document.getElementById("result1").textContent = counter1; 
 // // document.getElementById("result2").textContent = counter2; 
 // })
+
+
+// <----------------Generate timer----------------------->
+function getCurrenttime(){
+     const now = new Date()
+     //console.log(now)
+
+     const time = now.toLocaleString()
+     console.log(time)
+      return time;   
+}
+
+// const currtime= getCurrenttime()
+// document.getElementById("timeTag").textContent=` ${currtime}`
+
+// for(let i =0;i<5;i++){
+//    (setInterval(getCurrenttime,2000))
+// }
+let counter=0
+
+const intervalId = setInterval(function(){
+    const currtime = getCurrenttime()
+   // document.getElementById("timeTag").textContent=` ${currtime}`
+    counter++;
+    if(counter==5){
+        clearInterval(intervalId)
+    }
+}, 2000)
+
+
 
 
