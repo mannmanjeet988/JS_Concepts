@@ -89,7 +89,7 @@ function createOrder(cart, proceedToPayment )
         }
 }
 
-createOrder(cart,proceedToPayment)
+//createOrder(cart,proceedToPayment)
 
 function proceedToPayment(){
     console.log("proceed for payment")
@@ -164,6 +164,116 @@ async function handlePromisesUsingAsyncAwait(){
     let data3 = await multiply(data2, 3)
 }
 
-handlePromisesUsingAsyncAwait()
+//handlePromisesUsingAsyncAwait()
 
 
+//<--------------Print A B C using callback hell-------------->
+
+function printA(printB){
+    setTimeout(()=>{
+        console.log("A")
+        printB(printC)
+    },100)   
+}
+
+function printB(printC){
+    setTimeout(()=>{
+        console.log("B")
+        printC() 
+    },200) 
+    
+}
+
+function printC(){
+    setTimeout(()=>{
+        console.log("C")
+    },300)   
+}
+
+
+
+// printA(() => {
+//     printB(() => {
+//         printC();
+//     });
+// });
+
+//printA(printB)
+
+//<--------------Print A B C using promise chaining-------------->
+function printA(){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve("A")
+        },100) 
+    })
+      
+}
+
+function printB(){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve("B")
+        },200) 
+    })
+      
+}
+
+function printC(){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve("C")
+        },300) 
+    })
+      
+}
+
+// printA().then(char1=>{
+//     console.log(char1)
+//     return printB()
+// }).then(char1=>{
+//     console.log(char1)
+//     return printC()
+// }).then(char1=>{
+//     console.log(char1)
+// }).catch(error=>console.log(error))
+
+
+// <-------------fetchDataWithRetry--------------------------->
+async function fetchDataWithRetry(url, maxAttempts) {
+    let attempt = 1;
+    let delay = 1000; // Initial delay in milliseconds (1 second)
+
+    while (attempt <= maxAttempts) {
+        try {
+            const response = await fetch(url);
+
+            if (response.ok) {
+                // If the response is successful (status code 200-299), return the data
+                return await response.json();
+            }
+
+            // If the response is not successful, increase the delay and retry
+            console.log(`Attempt ${attempt} failed. Retrying in ${delay / 1000} seconds...`);
+        } catch (error) {
+            // If an error occurred during the fetch, retry with the current delay
+            console.error(`Attempt ${attempt} failed with error: ${error.message}. Retrying in ${delay / 1000} seconds...`);
+        }
+
+        // Increase the delay exponentially (you can adjust the factor as needed)
+        delay *= 2;
+
+        // Wait for the specified delay before the next retry
+        await new Promise(resolve => setTimeout(resolve, delay));
+
+        attempt++;
+    }
+
+    console.error(`Max retry attempts (${maxAttempts}) reached. Could not fetch data from ${url}`);
+}
+
+// Example usage:
+const url = 'https://dummyjson.com/products';
+const maxAttempts = 5; // Set the maximum number of retry attempts
+const data =fetchDataWithRetry(url, maxAttempts);
+console.log(data)

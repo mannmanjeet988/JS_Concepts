@@ -25,10 +25,10 @@ console.log("hello")
 // console.log(a)
 // let a
 
-let arr =[1, 2, 3 , 4,5 ]
-const output= arr.filter((x)=>x>3
+// let arr =[1, 2, 3 , 4,5 ]
+// const output= arr.filter((x)=>x>3
 
-)
+// )
 //console.log(output)
 
-console.log(typeof   typeof 1);
+//console.log(typeof   typeof 1);

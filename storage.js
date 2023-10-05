@@ -15,7 +15,7 @@ function setCookie(name, value, daysToLive) {
 // //console.log(document.cookie)
 
 function deleteCookie(name) {
-  document.cookie = `${name}=; expires=Thu,01 Jan 1970 00:00:00 UTC; path=/;`;
+  document.cookie = `${name}=; expires=01 Jan 2020 00:00:00 UTC; path=/;`;
 }
 
 function getCookie(name) {
@@ -47,14 +47,14 @@ const submitBtn = document
     console.log(document.cookie);
   });
 
-window.addEventListener("load", function () {
-  const savedUserName = getCookie("USERNAME");
-  if (savedUserName) {
-    // document.getElementById("userName").textContent= `Hi there, ${savedUserName}!`
-    this.alert(`Hi there, ${savedUserName}!`);
-  }
-});
+// window.addEventListener("load", function () {
+//   const savedUserName = getCookie("USERNAME");
+//   if (savedUserName) {
+//     // document.getElementById("userName").textContent= `Hi there, ${savedUserName}!`
+//     this.alert(`Hi there, ${savedUserName}!`);
+//   }
+// });
 
 console.log(document.cookie);
-deleteCookie("surbhi");
+deleteCookie("saksham");
 console.log(document.cookie);
