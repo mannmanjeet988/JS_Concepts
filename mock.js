@@ -32,3 +32,30 @@ console.log("hello")
 //console.log(output)
 
 //console.log(typeof   typeof 1);
+
+
+// function printA(printB){
+//     setInterval(()=>{
+//         console.log("A")
+//         printB(printC)
+//     },1000)
+// }
+
+function outer(){
+    var a=10;
+     function inner(){
+        console.log(a)
+    }
+    a=100;
+    console.log(a)
+    return inner;
+}
+   
+    
+//outer()();
+//outer();
+
+
+
+
+
